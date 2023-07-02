@@ -15,5 +15,11 @@
     "@img": "${folder}/src/img",
     "@scss": "${folder}/src/scss",
     "@js": "${folder}/src/js",
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.semi": false,
+
 }
