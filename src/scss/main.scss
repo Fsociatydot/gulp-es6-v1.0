@@ -1,0 +1,27 @@
+@import "fonts";
+
+body{
+    font-family: Roboto, sans-serif;
+    background: url("@img/default_dark.png");
+    span{
+        color: red;
+    }
+}
+
+@media(max-width: 768px){
+    span{
+        color: #111;
+    }
+}
+
+@media(max-width: 768px) {
+    body {
+        color: #fff;
+    }
+}
+
+@media(max-width: 1200px) {
+    body {
+        background-color: #ccc;
+    }
+}
