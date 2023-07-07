@@ -1,13 +1,11 @@
 <html lang="ru">
-@@include('html/head.html', {
-"title": "Главная"
-})
-<body>
+  @@include('html/head.html', { "title": "Главная" })
+  <body>
     @@include('html/header.html')
     <main>
+      <canvas id="fireworksCanvas"></canvas>
     </main>
-    <img src="@img/default_dark.png" alt="">
     @@include('html/footer.html')
     <script src="js/app.min.js"></script>
-</body>
+  </body>
 </html>
