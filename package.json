@@ -1,11 +1,11 @@
 {
   "name": "gulp-es6",
   "version": "1.0.0",
-  "description": "",
+  "description": "command: --build, --webp",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
-    "dev": "gulp",
+    "dev": "gulp --webp",
     "build": "gulp build --build",
     "zip": "gulp deployZip --build",
     "svgSprive": "gulp svgSprive"

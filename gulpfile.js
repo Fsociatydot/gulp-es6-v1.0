@@ -3,11 +3,12 @@ import { path } from "./gulp/config/path.js"
 import { plugins } from "./gulp/config/plugins.js"
 
 global.app = {
-    isBuild: process.argv.includes('--build'),
-    isDev: !process.argv.includes('--build'),
-    path: path,
-    gulp: gulp,
-    plugins: plugins
+  isBuild: process.argv.includes("--build"),
+  isDev: !process.argv.includes("--build"),
+  isDevWebp: process.argv.includes("--webp"),
+  path: path,
+  gulp: gulp,
+  plugins: plugins,
 }
 
 import { copy } from "./gulp/tasks/copy.js"
@@ -22,25 +23,27 @@ import { svgSprive } from "./gulp/tasks/svgSprive.js"
 import { zip } from "./gulp/tasks/zip.js"
 
 function watcher() {
-    gulp.watch(path.watch.files, copy)
-    gulp.watch(path.watch.html, html)
-    gulp.watch(path.watch.scss, scss)
-    gulp.watch(path.watch.js, js)
-    gulp.watch(path.watch.images, images)
+  gulp.watch(path.watch.files, copy)
+  gulp.watch(path.watch.html, html)
+  gulp.watch(path.watch.scss, scss)
+  gulp.watch(path.watch.js, js)
+  gulp.watch(path.watch.images, images)
 }
 
 export { svgSprive }
 
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle)
 
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images))
+const mainTasks = gulp.series(
+  fonts,
+  gulp.parallel(copy, html, scss, js, images)
+)
 
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))
 const build = gulp.series(reset, mainTasks)
 const deployZip = gulp.series(reset, mainTasks, zip)
 
-
 //экспорт сценариев
 export { dev, build, deployZip }
 
-gulp.task('default', dev)
+gulp.task("default", dev)
